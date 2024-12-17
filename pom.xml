@@ -98,7 +98,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.2.5.RELEASE</version>
                 <configuration>
-                    <mainClass>com.czy.echat.EchatApplication</mainClass>
+                    <mainClass>com.chatRoom.EchatApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
