@@ -1,22 +1,36 @@
 package com.chatRoom.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
-/**
- * @author MccreeFei
- * @create 2018-04-28 下午1:35
- */
+@Entity // 标记为 JPA 实体
+@Table(name = "message_record") // 指定数据库表名
 public class MessageRecordDo {
-    private Integer id;
-    private Integer userId;
-    private String userName;
-    private Integer messageType;
-    private String content;
-    private Date createTime;
 
+    @Id // 标记主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 主键自增策略
+    private Integer id; // 主键
+
+    @Column(name = "user_id")
+    private Integer userId; // 用户ID
+
+    @Column(name = "user_name")
+    private String userName; // 用户名
+
+    @Column(name = "message_type")
+    private Integer messageType; // 消息类型（1.文本，2.图片）
+
+    @Column(name = "content")
+    private String content; // 消息内容
+
+    @Column(name = "create_time")
+    private Date createTime; // 创建时间
+
+    // 无参构造函数
     public MessageRecordDo() {
     }
 
+    // 全参构造函数
     public MessageRecordDo(Integer id, Integer userId, String userName, Integer messageType, String content, Date createTime) {
         this.id = id;
         this.userId = userId;
@@ -26,11 +40,13 @@ public class MessageRecordDo {
         this.createTime = createTime;
     }
 
-    public static MessageRecordBuilder messageRecordBuilder(){
+    // 构建器模式
+    public static MessageRecordBuilder messageRecordBuilder() {
         return new MessageRecordBuilder();
     }
 
-    public static class MessageRecordBuilder{
+    // 构建器类
+    public static class MessageRecordBuilder {
         private Integer id;
         private Integer userId;
         private String userName;
@@ -68,11 +84,12 @@ public class MessageRecordDo {
             return this;
         }
 
-        public MessageRecordDo build(){
+        public MessageRecordDo build() {
             return new MessageRecordDo(id, userId, userName, messageType, content, createTime);
         }
     }
 
+    // Getters and Setters
     public Integer getId() {
         return id;
     }

@@ -3,7 +3,6 @@ package com.chatRoom.controller;
 
 import com.chatRoom.enums.LoginTypeEnum;
 import com.chatRoom.model.*;
-import com.czy.echat.model.*;
 import com.chatRoom.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

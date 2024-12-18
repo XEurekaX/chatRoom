@@ -1,6 +1,5 @@
 package com.chatRoom.controller;
 
-
 import com.chatRoom.enums.MessageTypeEnum;
 import com.chatRoom.model.Message;
 import com.chatRoom.model.MessageRecordDo;
@@ -13,16 +12,14 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -103,5 +100,16 @@ public class MessageController {
             }
         }
         return "upload success";
+    }
+
+    /**
+     * 获取历史消息
+     * @return 历史消息列表
+     */
+    @RequestMapping(value = "/api/chat/history", method = RequestMethod.GET)
+    @ResponseBody
+    public List<MessageRecordDo> getHistoryMessages() {
+        // 从数据库中获取历史消息
+        return userService.getHistoryMessages();
     }
 }

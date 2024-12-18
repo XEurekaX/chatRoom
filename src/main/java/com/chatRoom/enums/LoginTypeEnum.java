@@ -1,9 +1,5 @@
 package com.chatRoom.enums;
 
-/**
- * @author MccreeFei
- * @create 2018-04-28 下午1:49
- */
 public enum LoginTypeEnum {
     LOGIN(1, "上线"),
     LOGOUT(2, "下线");

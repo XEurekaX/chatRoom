@@ -4,6 +4,8 @@ import com.chatRoom.model.LoginInfoDo;
 import com.chatRoom.model.MessageRecordDo;
 import com.chatRoom.model.User;
 
+import java.util.List;
+
 /**
  * 用户service接口
  */
@@ -36,4 +38,6 @@ public interface UserService {
     public void addUserMessageRecord(MessageRecordDo messageRecordDo);
 
     public User getUserByName(String name);
+
+    public List<MessageRecordDo> getHistoryMessages();
 }

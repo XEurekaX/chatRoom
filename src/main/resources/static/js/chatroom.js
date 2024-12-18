@@ -89,6 +89,9 @@ function initEmoji() {
  * messageType分为：text与image
  */
 function connect() {
+    // 获取历史消息
+    getHistoryMessages();
+
     var socket = new SockJS($("#websocketUrl").val().trim());
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame){
@@ -97,7 +100,7 @@ function connect() {
             var user = "系统消息";
             var date = null;
             var msg = $("#myName").val() + "加入聊天！";
-            showNewMessage(user, date, msg);
+            showNewMessage(user, date, msg); // 显示“欢迎加入聊天”消息
         });
         stompClient.subscribe("/topic/login", function (message) {
             showNewUser(message.body);
@@ -121,6 +124,42 @@ function connect() {
 
     });
 }
+
+/**
+ * 获取历史消息
+ */
+function getHistoryMessages() {
+    $.ajax({
+        url: '/api/chat/history', // 后端 API 地址
+        type: 'GET',
+        success: function(response) {
+            console.log("History messages:", response); // 打印历史消息到控制台
+
+            // 检查 response 是否为数组
+            if (Array.isArray(response)) {
+                response.forEach(function(message) {
+                    var user = message.userName;
+                    var date = message.createTime;
+                    var msg = message.content;
+                    var messageType = message.messageType;
+
+                    if (messageType == 1) { // 文本消息
+                        showNewMessage(user, date, msg);
+                    } else if (messageType == 2) { // 图片消息
+                        showNewImage(user, date, msg);
+                    }
+                });
+            } else {
+                console.error("Invalid response format. Expected an array.");
+            }
+        },
+        error: function(error) {
+            console.error("Failed to fetch history messages:", error);
+        }
+    });
+}
+
+
 /**
  * 显示用户离线消息
  * @param message
@@ -208,6 +247,8 @@ function showNewMessage(user, date, msg) {
     container.append(msgToDisplay);
     container.scrollTop = container.scrollHeight;
 }
+
+
 /**
  * 正则表达式显示消息中的emoji图片
  * @param message

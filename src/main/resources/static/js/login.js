@@ -127,34 +127,6 @@ $(function () {
 
     });
 
-    // $("#reg").click(function () {
-    //     var userName = $("#user").val().trim();
-    //     var pwd1 = $("#passwd").val().trim();
-    //     var pwd2 = $("#passwd2").val().trim();
-    //     if (userName.length == 0 || pwd1.length == 0 || pwd2.length == 0){
-    //         sweetAlert("哎呦…出错了…", "您还有些内容未填写~", "error");
-    //         return;
-    //     } else if (pwd1 != pwd2){
-    //         sweetAlert("哎呦…出错了…", "两次密码输入不一致，请重新填写~", "error");
-    //     } else {
-    //         var sendData = JSON.stringify({'name' : userName, 'password' : pwd1});
-    //         $.ajax({
-    //             type: "POST",
-    //             url: $("#replyRegistUrl").val().trim(), // 修正此行
-    //             data: sendData,
-    //             dataType: "json",
-    //             contentType: "application/json",
-    //             success : function (data) {
-    //                 if (data.successed){
-    //                     sweetAlert("注册成功啦！", "快去登录~加入聊天吧~", "success");
-    //                 } else {
-    //                     sweetAlert("哎呦…出错了…", "注册失败，请再次尝试~", "error");
-    //                 }
-    //             }
-    //         });
-    //     }
-    // });
-
     $('#switch_qlogin').click(function () {
         $('#switch_login').removeClass("switch_btn_focus").addClass('switch_btn');
         $('#switch_qlogin').removeClass("switch_btn").addClass('switch_btn_focus');

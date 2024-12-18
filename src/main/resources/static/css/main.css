@@ -42,7 +42,7 @@ html, body {
 
 #activeUserWraper span {
     font-size: 16px;
-    color: #b9bbbe;
+    color: #eef0f2;
     margin-left: 10px;
 }
 
@@ -96,7 +96,7 @@ html, body {
     border: none;
     color: #ffffff;
     padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
