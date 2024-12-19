@@ -14,9 +14,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * created by czy on 2021/1/7 22:10
- **/
 @Configuration
 public class DruidConfig {
 
